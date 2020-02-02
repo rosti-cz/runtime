@@ -1,0 +1,18 @@
+export PATH=/srv/bin/primary_tech:/srv/bin/primary_tech/sbin:$PATH:/usr/sbin:/sbin
+
+# Use only if the shell is opened via SSH
+if [ -n "$SSH_TTY" ]; then
+    export PS1="\[\033[38;5;2m\]\u@\[$(tput sgr0)\]\[\033[38;5;3m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;67m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;40m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+
+    alias ll='ls -alh'
+
+    if [ -e /opt/etc/bashrc/ ]; then
+        . /opt/etc/bashrc/*
+    fi
+fi
+
+# Default path
+cd /srv
+
+# DO NOT REWRITE ME
+# This is information for initialization script. If it finds the line above, you can edit this file as you wish and changes remain

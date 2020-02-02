@@ -1,0 +1,26 @@
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+syn on
+set noerrorbells
+set number
+set wildmenu
+set pastetoggle=<F11>
+set scrolloff=3
+set smartindent
+
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
+
