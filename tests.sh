@@ -20,8 +20,8 @@ function stop() {
 
 # Default page
 run
-$DOCKER exec -ti $CONTAINER_NAME curl http://localhost:8000
-$DOCKER exec -ti $CONTAINER_NAME curl http://localhost:8000 | grep "<title>Roští.cz</title>" > /dev/null
+$DOCKER exec-t $CONTAINER_NAME curl http://localhost:8000
+$DOCKER exec-t $CONTAINER_NAME curl http://localhost:8000 | grep "<title>Roští.cz</title>" > /dev/null
 if [ $? -eq 0 ]; then
     echo "$I/$COUNT default response correct"
 else
@@ -37,9 +37,9 @@ stop
 # Node.js 12.14.1
 run
 
-$DOCKER exec -ti -e TESTMODE=1 -e MENUITEM=tech -e TECH=node-12.14.1 $CONTAINER_NAME su app -c rosti > /dev/null
+$DOCKER exec-t -e TESTMODE=1 -e MENUITEM=tech -e TECH=node-12.14.1 $CONTAINER_NAME su app -c rosti > /dev/null
 sleep 3
-$DOCKER exec -ti $CONTAINER_NAME curl http://localhost:8000 | grep package.json > /dev/null
+$DOCKER exec-t $CONTAINER_NAME curl http://localhost:8000 | grep package.json > /dev/null
 if [ $? -eq 0 ]; then
     echo "$I/$COUNT Node.js 12.14.1 response correct"
 else
@@ -54,9 +54,9 @@ stop
 # Node.js 13.7.0
 run
 
-$DOCKER exec -ti -e TESTMODE=1 -e MENUITEM=tech -e TECH=node-13.7.0 $CONTAINER_NAME su app -c rosti > /dev/null
+$DOCKER exec-t -e TESTMODE=1 -e MENUITEM=tech -e TECH=node-13.7.0 $CONTAINER_NAME su app -c rosti > /dev/null
 sleep 3
-$DOCKER exec -ti $CONTAINER_NAME curl http://localhost:8000 | grep package.json > /dev/null
+$DOCKER exec-t $CONTAINER_NAME curl http://localhost:8000 | grep package.json > /dev/null
 if [ $? -eq 0 ]; then
     echo "$I/$COUNT Node.js 13.7.0 response correct"
 else
@@ -72,9 +72,9 @@ stop
 # Python 3.8.2
 run
 
-$DOCKER exec -ti -e TESTMODE=1 -e MENUITEM=tech -e TECH=python-3.8.1 $CONTAINER_NAME su app -c rosti > /dev/null
+$DOCKER exec-t -e TESTMODE=1 -e MENUITEM=tech -e TECH=python-3.8.1 $CONTAINER_NAME su app -c rosti > /dev/null
 sleep 5
-$DOCKER exec -ti $CONTAINER_NAME curl http://localhost:8000 | grep "app.py" > /dev/null
+$DOCKER exec-t $CONTAINER_NAME curl http://localhost:8000 | grep "app.py" > /dev/null
 if [ $? -eq 0 ]; then
     echo "$I/$COUNT Python 3.8.1 response correct"
 else
@@ -89,9 +89,9 @@ stop
 # PHP 7.4.2
 run
 
-$DOCKER exec -ti -e TESTMODE=1 -e MENUITEM=tech -e TECH=php-7.4.2 $CONTAINER_NAME su app -c rosti > /dev/null
+$DOCKER exec-t -e TESTMODE=1 -e MENUITEM=tech -e TECH=php-7.4.2 $CONTAINER_NAME su app -c rosti > /dev/null
 sleep 5
-$DOCKER exec -ti $CONTAINER_NAME curl http://localhost:8000 | grep "PHP aplikaci" > /dev/null
+$DOCKER exec-t $CONTAINER_NAME curl http://localhost:8000 | grep "PHP aplikaci" > /dev/null
 if [ $? -eq 0 ]; then
     echo "$I/$COUNT PHP 7.4.2 response correct"
 else
