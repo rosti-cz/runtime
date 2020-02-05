@@ -1,5 +1,5 @@
 DOCKER=docker
-VERSION=2020.01-beta-1
+VERSION=2020.02
 
 all: build
 
