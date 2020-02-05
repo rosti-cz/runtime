@@ -61,7 +61,8 @@ cd php-$VERSION
 	    --enable-opcache \
 	    --with-imap \
 	    --with-imap-ssl \
-        --with-kerberos
+        --with-kerberos \
+        --with-soapclient
 make -j
 make install
 
