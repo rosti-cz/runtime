@@ -62,9 +62,14 @@ cd php-$VERSION
 	    --with-imap \
 	    --with-imap-ssl \
         --with-kerberos \
-        --with-soapclient
+        --with-soapclient \
+		--with-pear
 make -j
 make install
 
 mkdir -p /opt/techs/php-$VERSION/etc/conf.d/
 ln -s /srv/conf/php-fpm/php.ini /opt/techs/php-$VERSION/etc/conf.d/app.ini
+
+echo "no" | /opt/techs/php-$VERSION/bin/pecl install redis
+
+echo "extension=redis.so" > /opt/techs/php-$VERSION/etc/conf.d/extensions.ini

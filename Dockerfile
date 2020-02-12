@@ -14,7 +14,7 @@ imagemagick libmagickwand-dev ncdu \
 libcurl4-openssl-dev python3 python3-pip python3-virtualenv \
 libcurl4-openssl-dev python-dev libproj-dev gdal-bin libmemcached-dev swig mutt \
 imagemagick ffmpeg libyaml-dev libc-client2007e-dev libonig-dev libkrb5-dev dialog \
-whiptail tmux
+whiptail tmux rsync nmap
  
 WORKDIR /srv
 
