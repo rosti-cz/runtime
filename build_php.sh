@@ -63,7 +63,9 @@ cd php-$VERSION
 	    --with-imap-ssl \
         --with-kerberos \
         --with-soapclient \
-		--with-pear
+		--with-pear \
+		--enable-gd \
+		--with-jpeg
 make -j
 make install
 
