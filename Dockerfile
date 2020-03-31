@@ -2,13 +2,19 @@ FROM debian:buster
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget gpg
+
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y locales libffi-dev \
 libssl-dev default-libmysqlclient-dev ca-certificates libpq-dev libjpeg62 libjpeg-dev \
 libpng-dev libpng-dev build-essential git mercurial build-essential \
 libbz2-dev libsqlite3-dev libreadline-dev zlib1g-dev libncurses5-dev \
 libssl-dev libgdbm-dev cron git mercurial subversion vim nano mc htop procps \
 subversion dropbear gettext wget redis-server memcached supervisor curl ssh \
-mariadb-client postgresql-client bind9-host dnsutils nginx \
+mariadb-client postgresql-client-12 postgresql-12-postgis-3-scripts bind9-host dnsutils nginx \
 libxml2-dev libxslt1-dev openssh-sftp-server links2 lynx \
 imagemagick libmagickwand-dev ncdu \
 libcurl4-openssl-dev python3 python3-pip python3-virtualenv \
@@ -40,8 +46,10 @@ WORKDIR /usr/src
 ADD build_node.sh /usr/local/bin/build_node.sh
 # 2020/01
 RUN build_node.sh 13.7.0
+RUN build_node.sh 13.12.0
 # 2020/01
 RUN build_node.sh 12.14.1
+RUN build_node.sh 12.16.1
 
 ## Python
 
@@ -49,6 +57,7 @@ WORKDIR /usr/src
 ADD build_python.sh /usr/local/bin/build_python.sh
 # 2020/01
 RUN build_python.sh 3.8.1
+RUN build_python.sh 3.8.2
 
 ## PHP
 
@@ -56,6 +65,7 @@ WORKDIR /usr/src
 ADD build_php.sh /usr/local/bin/build_php.sh
 # 2020/01
 RUN build_php.sh 7.4.2
+RUN build_php.sh 7.4.4
 
 ## Roští script
 

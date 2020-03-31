@@ -37,9 +37,13 @@ while /bin/true; do
             if [ ! "$TESTMODE" = "1" ]; then
                 tech=$(whiptail --menu "Select tech" $HEIGHT $WIDTH 6 \
                         "python-3.8.1" "  Python 3.8.1" \
+                        "python-3.8.2" "  Python 3.8.2" \
                         "node-13.7.0" "  Node 13.7.0" \
+                        "node-13.12.0" "  Node 13.12.0" \
                         "node-12.14.1" "  Node 12.14.1" \
+                        "node-12.16.1" "  Node 12.16.1" \
                         "php-7.4.2" "  PHP 7.4.2" \
+                        "php-7.4.4" "  PHP 7.4.4" \
                         "back"  "  Go back" \
                         3>&1 1>&2 2>&3)
             else
