@@ -4,12 +4,14 @@ VERSION=2020.04-1
 all: build
 
 build:
+	$(DOCKER) pull debian:buster
 	$(DOCKER) build -t rosti/runtime:dev .
 
 test: build
 	DOCKER=$(DOCKER) ./tests.sh
 
 squashed:
+	$(DOCKER) pull debian:buster
 	$(DOCKER) build --squash -t rosti/runtime:dev-squashed .
 
 push: squashed

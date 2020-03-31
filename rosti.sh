@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ~/.bashrc
+
 WIDTH=180
 HEIGHT=25
 
