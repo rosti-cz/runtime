@@ -7,7 +7,7 @@ build:
 	$(DOCKER) pull debian:buster
 	$(DOCKER) build -t rosti/runtime:dev .
 
-test: build
+test:
 	DOCKER=$(DOCKER) ./tests.sh
 
 squashed:
