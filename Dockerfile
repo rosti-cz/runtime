@@ -64,6 +64,7 @@ RUN build_python.sh 3.8.2
 WORKDIR /usr/src
 ADD build_php.sh /usr/local/bin/build_php.sh
 # 2020/01
+RUN build_php.sh 7.2.29
 RUN build_php.sh 7.4.2
 RUN build_php.sh 7.4.4
 

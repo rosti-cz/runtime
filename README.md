@@ -16,6 +16,7 @@ The image is based on Debian 10 Buster and it's size is around 2.5 GB when it's 
 * Node.js 13.12.0
 * Node.js 12.14.1
 * Node.js 12.16.1
+* PHP 7.2.29
 * PHP 7.4.2
 * PHP 7.4.4
 

@@ -44,6 +44,7 @@ while /bin/true; do
                         "node-13.12.0" "  Node 13.12.0" \
                         "node-12.14.1" "  Node 12.14.1" \
                         "node-12.16.1" "  Node 12.16.1" \
+                        "php-7.2.29" "  PHP 7.2.29" \
                         "php-7.4.2" "  PHP 7.4.2" \
                         "php-7.4.4" "  PHP 7.4.4" \
                         "back"  "  Go back" \
