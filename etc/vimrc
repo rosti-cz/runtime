@@ -9,6 +9,7 @@ set wildmenu
 set pastetoggle=<F11>
 set scrolloff=3
 set smartindent
+set fileformat=unix
 
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
