@@ -45,28 +45,27 @@ ENV TERM       xterm
 WORKDIR /usr/src
 ADD build_node.sh /usr/local/bin/build_node.sh
 # 2020/01
-RUN build_node.sh 13.7.0
 RUN build_node.sh 13.12.0
+RUN build_node.sh 14.8.0
 # 2020/01
-RUN build_node.sh 12.14.1
 RUN build_node.sh 12.16.1
+RUN build_node.sh 12.18.3
 
 ## Python
 
 WORKDIR /usr/src
 ADD build_python.sh /usr/local/bin/build_python.sh
 # 2020/01
-RUN build_python.sh 3.8.1
 RUN build_python.sh 3.8.2
+RUN build_python.sh 3.8.5
 
 ## PHP
 
 WORKDIR /usr/src
 ADD build_php.sh /usr/local/bin/build_php.sh
 # 2020/01
-RUN build_php.sh 7.2.29
-RUN build_php.sh 7.4.2
 RUN build_php.sh 7.4.4
+RUN build_php.sh 7.4.9
 
 ## Roští script
 

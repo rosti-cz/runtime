@@ -32,23 +32,6 @@ I=$((I+1))
 stop
 ###############
 
-# Node.js 12.14.1
-run
-
-$DOCKER exec -e TESTMODE=1 -e MENUITEM=tech -e TECH=node-12.14.1 $CONTAINER_NAME su app -c rosti > /dev/null
-sleep 3
-$DOCKER exec $CONTAINER_NAME curl http://localhost:8000 | grep package.json > /dev/null
-if [ $? -eq 0 ]; then
-    echo "$I/$COUNT Node.js 12.14.1 response correct"
-else
-    echo "$I/$COUNT Node.js 12.14.1 response incorrect"
-    PROBLEM=1
-fi
-
-I=$((I+1))
-stop
-
-
 # Node.js 12.16.1
 run
 
@@ -64,23 +47,23 @@ fi
 
 I=$((I+1))
 stop
-###############
 
-# Node.js 13.12.0
+# Node.js 12.18.3
 run
 
-$DOCKER exec -e TESTMODE=1 -e MENUITEM=tech -e TECH=node-13.12.0 $CONTAINER_NAME su app -c rosti > /dev/null
+$DOCKER exec -e TESTMODE=1 -e MENUITEM=tech -e TECH=node-12.18.3 $CONTAINER_NAME su app -c rosti > /dev/null
 sleep 3
 $DOCKER exec $CONTAINER_NAME curl http://localhost:8000 | grep package.json > /dev/null
 if [ $? -eq 0 ]; then
-    echo "$I/$COUNT Node.js 13.12.0 response correct"
+    echo "$I/$COUNT Node.js 12.18.3 response correct"
 else
-    echo "$I/$COUNT Node.js 13.12.0 response incorrect"
+    echo "$I/$COUNT Node.js 12.18.3 response incorrect"
     PROBLEM=1
 fi
 
 I=$((I+1))
 stop
+###############
 
 # Node.js 13.7.0
 run
@@ -97,24 +80,23 @@ fi
 
 I=$((I+1))
 stop
-###############
 
-# Python 3.8.1
+# Node.js 14.8.0
 run
 
-$DOCKER exec -e TESTMODE=1 -e MENUITEM=tech -e TECH=python-3.8.1 $CONTAINER_NAME su app -c rosti > /dev/null
-sleep 5
-$DOCKER exec $CONTAINER_NAME curl http://localhost:8000 | grep "app.py" > /dev/null
+$DOCKER exec -e TESTMODE=1 -e MENUITEM=tech -e TECH=node-14.8.0 $CONTAINER_NAME su app -c rosti > /dev/null
+sleep 3
+$DOCKER exec $CONTAINER_NAME curl http://localhost:8000 | grep package.json > /dev/null
 if [ $? -eq 0 ]; then
-    echo "$I/$COUNT Python 3.8.1 response correct"
+    echo "$I/$COUNT Node.js 14.8.0 response correct"
 else
-    echo "$I/$COUNT Python 3.8.1 response incorrect"
+    echo "$I/$COUNT Node.js 14.8.0 response incorrect"
     PROBLEM=1
 fi
 
 I=$((I+1))
 stop
-
+###############
 
 # Python 3.8.2
 run
@@ -131,23 +113,23 @@ fi
 
 I=$((I+1))
 stop
-###############
 
-# PHP 7.4.2
+# Python 3.8.5
 run
 
-$DOCKER exec -e TESTMODE=1 -e MENUITEM=tech -e TECH=php-7.4.2 $CONTAINER_NAME su app -c rosti > /dev/null
+$DOCKER exec -e TESTMODE=1 -e MENUITEM=tech -e TECH=python-3.8.5 $CONTAINER_NAME su app -c rosti > /dev/null
 sleep 5
-$DOCKER exec $CONTAINER_NAME curl http://localhost:8000 | grep "PHP aplikaci" > /dev/null
+$DOCKER exec $CONTAINER_NAME curl http://localhost:8000 | grep "app.py" > /dev/null
 if [ $? -eq 0 ]; then
-    echo "$I/$COUNT PHP 7.4.2 response correct"
+    echo "$I/$COUNT Python 3.8.5 response correct"
 else
-    echo "$I/$COUNT PHP 7.4.2 response incorrect"
+    echo "$I/$COUNT Python 3.8.5 response incorrect"
     PROBLEM=1
 fi
 
 I=$((I+1))
 stop
+###############
 
 # PHP 7.4.4
 run
@@ -159,6 +141,22 @@ if [ $? -eq 0 ]; then
     echo "$I/$COUNT PHP 7.4.4 response correct"
 else
     echo "$I/$COUNT PHP 7.4.4 response incorrect"
+    PROBLEM=1
+fi
+
+I=$((I+1))
+stop
+
+# PHP 7.4.9
+run
+
+$DOCKER exec -e TESTMODE=1 -e MENUITEM=tech -e TECH=php-7.4.9 $CONTAINER_NAME su app -c rosti > /dev/null
+sleep 5
+$DOCKER exec $CONTAINER_NAME curl http://localhost:8000 | grep "PHP aplikaci" > /dev/null
+if [ $? -eq 0 ]; then
+    echo "$I/$COUNT PHP 7.4.9 response correct"
+else
+    echo "$I/$COUNT PHP 7.4.9 response incorrect"
     PROBLEM=1
 fi
 
