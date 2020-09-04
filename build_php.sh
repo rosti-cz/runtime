@@ -29,7 +29,8 @@ cd php-$VERSION
 	    --with-curl \
 	    --with-mcrypt \
 	    --with-zlib \
-	    --with-gd \
+	    --enable-gd \
+		--with-zip \
 	    --with-pgsql \
 	    --disable-rpath \
 	    --enable-inline-optimization \
@@ -43,7 +44,6 @@ cd php-$VERSION
 	    --enable-exif \
 	    --enable-bcmath \
 	    --with-mhash \
-	    --enable-zip \
 	    --with-pcre-regex \
 	    --with-mysql \
 	    --with-pdo-mysql \

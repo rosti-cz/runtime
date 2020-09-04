@@ -12,7 +12,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y locales libffi-dev \
 libssl-dev default-libmysqlclient-dev ca-certificates libpq-dev libjpeg62 libjpeg-dev \
 libpng-dev libpng-dev build-essential git mercurial build-essential \
 libbz2-dev libsqlite3-dev libreadline-dev zlib1g-dev libncurses5-dev \
-libssl-dev libgdbm-dev cron git mercurial subversion vim nano mc htop procps \
+libssl-dev libgdbm-dev libgd-dev cron git mercurial subversion vim nano mc htop procps \
 subversion dropbear gettext wget redis-server memcached supervisor curl ssh \
 mariadb-client postgresql-client-12 postgresql-12-postgis-3-scripts bind9-host dnsutils nginx \
 libxml2-dev libxslt1-dev openssh-sftp-server links2 lynx \
@@ -20,7 +20,7 @@ imagemagick libmagickwand-dev ncdu \
 libcurl4-openssl-dev python3 python3-pip python3-virtualenv \
 libcurl4-openssl-dev python-dev libproj-dev gdal-bin libmemcached-dev swig mutt \
 imagemagick ffmpeg libyaml-dev libc-client2007e-dev libonig-dev libkrb5-dev dialog \
-whiptail tmux rsync nmap
+whiptail tmux rsync nmap libzip-dev
  
 WORKDIR /srv
 
