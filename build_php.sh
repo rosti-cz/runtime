@@ -70,6 +70,10 @@ make install
 mkdir -p /opt/techs/php-$VERSION/etc/conf.d/
 ln -s /srv/conf/php-fpm/php.ini /opt/techs/php-$VERSION/etc/conf.d/app.ini
 
+cd /opt/techs/php-$VERSION/bin
+curl -s https://getcomposer.org/installer | ./php -d allow_url_fopen=On
+cd -
+
 echo "no" | /opt/techs/php-$VERSION/bin/pecl install redis
 
 echo "extension=redis.so" > /opt/techs/php-$VERSION/etc/conf.d/extensions.ini

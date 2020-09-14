@@ -1,4 +1,4 @@
-export PATH=/srv/bin/primary_tech:/srv/bin/primary_tech/sbin:$PATH:/usr/sbin:/sbin
+export PATH=/srv/bin/primary_tech:/srv/bin/primary_tech/sbin:/srv/bin:$PATH:/usr/sbin:/sbin
 
 # Use only if the shell is opened via SSH
 if [ -n "$SSH_TTY" ]; then
