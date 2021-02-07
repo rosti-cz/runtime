@@ -28,7 +28,7 @@ function setTech() {
     tech=$1
 
     # Activation of primary tech bin directory
-    test ! -e $PRIMARYDIR || unlink $PRIMARYDIR
+    test ! -e $PRIMARYDIR || $TECHDIR/$tech/bin
     ln -s $TECHDIR/$tech/bin $PRIMARYDIR
 
     # Parse name of the tech - like python or node
@@ -163,19 +163,31 @@ function quickTech() {
     case $TECH in
         "python")
             if [ -z "$VERSION" ]; then
-                VERSION=3.8.5
+                VERSION=3.9.1
             fi
             setTech $TECH-$VERSION
         ;;
         "php")
             if [ -z "$VERSION" ]; then
-                VERSION=7.4.9
+                VERSION=7.4.15
             fi
             setTech $TECH-$VERSION
         ;;
         "node")
             if [ -z "$VERSION" ]; then
-                VERSION=14.8.0
+                VERSION=14.15.4
+            fi
+            setTech $TECH-$VERSION
+        ;;
+        "ruby")
+            if [ -z "$VERSION" ]; then
+                VERSION=3.0.0
+            fi
+            setTech $TECH-$VERSION
+        ;;
+        "deno")
+            if [ -z "$VERSION" ]; then
+                VERSION=1.7.2
             fi
             setTech $TECH-$VERSION
         ;;
@@ -201,7 +213,7 @@ fi
 
 while /bin/true; do
     if [ "$MENUITEM" = "" ]; then
-    menuitem=$(whiptail --menu "Choose what to do" $HEIGHT $WIDTH 6 \
+    menuitem=$(whiptail --menu "Choose what to do" $HEIGHT $WIDTH 10 \
             "tech" "  Activaton of primary tech" \
             "services" "  Enable additional services (Redis, Memcached, ..)" \
             "cron" "  Update crontab" \
@@ -216,15 +228,8 @@ while /bin/true; do
         # Only one tech can be enabled same time but it's possible to use any of them from /opt/techs
         "tech")
             if [ "$TECH" = "" ]; then
-                tech=$(whiptail --menu "Select tech" $HEIGHT $WIDTH 6 \
-                        "python-3.8.2" "  Python 3.8.2" \
-                        "python-3.8.5" "  Python 3.8.5" \
-                        "node-13.12.0" "  Node 13.12.0" \
-                        "node-14.8.0" "  Node 14.8.0" \
-                        "node-12.16.1" "  Node 12.16.1" \
-                        "node-12.18.3" "  Node 12.18.3" \
-                        "php-7.4.4" "  PHP 7.4.4" \
-                        "php-7.4.9" "  PHP 7.4.9" \
+                tech=$(whiptail --menu "Select tech" $HEIGHT $WIDTH 10 \
+{{TECHS}}
                         "back"  "  Go back" \
                         3>&1 1>&2 2>&3)
             else

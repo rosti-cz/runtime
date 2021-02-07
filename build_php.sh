@@ -21,7 +21,7 @@ cd php-$VERSION
         --sbindir=/opt/techs/php-$VERSION/bin \
 	    --with-pdo-pgsql \
 	    --with-zlib-dir \
-	    --with-freetype-dir \
+	    --with-freetype \
 	    --enable-mbstring \
 	    --with-libxml-dir=/usr \
 	    --enable-soap \
@@ -47,8 +47,8 @@ cd php-$VERSION
 	    --with-pcre-regex \
 	    --with-mysql \
 	    --with-pdo-mysql \
-	    --with-jpeg-dir=/usr \
-	    --with-png-dir=/usr \
+	    --with-jpeg \
+	    --with-png-dir \
 	    --enable-gd-native-ttf \
 	    --with-openssl \
 	    --with-fpm-user=app\
@@ -61,6 +61,7 @@ cd php-$VERSION
 	    --enable-opcache \
 	    --with-imap \
 	    --with-imap-ssl \
+	    --with-sodium \
         --with-kerberos \
         --with-soapclient \
 		--with-pear
@@ -75,5 +76,7 @@ curl -s https://getcomposer.org/installer | ./php -d allow_url_fopen=On
 cd -
 
 echo "no" | /opt/techs/php-$VERSION/bin/pecl install redis
+echo "no" | /opt/techs/php-$VERSION/bin/pecl install imagick
 
 echo "extension=redis.so" > /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
+echo "extension=imagick.so" >> /opt/techs/php-$VERSION/etc/conf.d/extensions.ini

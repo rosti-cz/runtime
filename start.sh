@@ -122,6 +122,12 @@ if [ -e /srv/app/init.sh ]; then
     su app -c /srv/app/init.sh
 fi
 
+# Custom /etc/ssl/openssl.cnf
+if [ -e /srv/conf/openssl.cnf ]; then
+    rm /etc/ssl/openssl.cnf
+    cp /srv/conf/openssl.cnf /etc/ssl/openssl.cnf
+fi
+
 ####################
 # Default Nginx page
 ####################
