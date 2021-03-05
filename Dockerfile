@@ -70,6 +70,11 @@ RUN build_php.sh 7.4.9
 # 2021/02
 RUN build_php.sh 7.4.15
 
+## PHP 8
+
+# 2021/02
+RUN build_php8.sh 8.0.3
+
 ## Ruby
 WORKDIR /usr/src
 ADD build_ruby.sh /usr/local/bin/build_ruby.sh

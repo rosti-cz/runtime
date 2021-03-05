@@ -12,7 +12,7 @@ wget https://www.php.net/distributions/php-$VERSION.tar.bz2
 tar xf php-$VERSION.tar.bz2
 rm php-$VERSION.tar.bz2
 
-test -e /usr/lib/x86_64-linux-gnu/libc-client.a || ln -s /usr/lib/libc-client.a /usr/lib/x86_64-linux-gnu/libc-client.a
+# test -e /usr/lib/x86_64-linux-gnu/libc-client.a || ln -s /usr/lib/libc-client.a /usr/lib/x86_64-linux-gnu/libc-client.a
 
 cd php-$VERSION
 ./configure --enable-fpm --with-mysqli --prefix=/opt/techs/php-$VERSION \
@@ -23,17 +23,14 @@ cd php-$VERSION
 	    --with-zlib-dir \
 	    --with-freetype \
 	    --enable-mbstring \
-	    --with-libxml-dir=/usr \
 	    --enable-soap \
 	    --enable-calendar \
 	    --with-curl \
-	    --with-mcrypt \
 	    --with-zlib \
 	    --enable-gd \
 		--with-zip \
 	    --with-pgsql \
 	    --disable-rpath \
-	    --enable-inline-optimization \
 	    --with-bz2 \
 	    --with-zlib \
 	    --enable-sockets \
@@ -44,31 +41,26 @@ cd php-$VERSION
 	    --enable-exif \
 	    --enable-bcmath \
 	    --with-mhash \
-	    --with-pcre-regex \
-	    --with-mysql \
 	    --with-pdo-mysql \
 	    --with-jpeg \
-	    --with-png-dir \
-	    --enable-gd-native-ttf \
 	    --with-openssl \
 	    --with-fpm-user=app\
 	    --with-fpm-group=app\
 	    --with-libdir=/lib/x86_64-linux-gnu \
 	    --enable-ftp \
 	    --with-gettext \
-	    --with-xmlrpc \
 	    --with-xsl \
 	    --enable-opcache \
 	    --with-imap \
 	    --with-imap-ssl \
 	    --with-sodium \
         --with-kerberos \
-        --with-soapclient \
 		--with-pear
 make -j
 make install
 
 mkdir -p /opt/techs/php-$VERSION/etc/conf.d/
+ln -s /srv/conf/php-fpm/php.ini /opt/techs/php-$VERSION/etc/conf.d/app.ini
 
 cd /opt/techs/php-$VERSION/bin
 curl -s https://getcomposer.org/installer | ./php -d allow_url_fopen=On
@@ -77,6 +69,9 @@ cd -
 echo "no" | /opt/techs/php-$VERSION/bin/pecl install redis
 echo "no" | /opt/techs/php-$VERSION/bin/pecl install imagick
 
+
 echo "zend_extension=opcache.so" > /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
 echo "extension=redis.so" >> /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
-echo "extension=imagick.so" >> /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
+# Not supported yet
+# https://github.com/Imagick/imagick/issues/358
+# echo "extension=imagick.so" >> /opt/techs/php-$VERSION/etc/conf.d/extensions.ini

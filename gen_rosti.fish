@@ -12,6 +12,9 @@ for line in (cat Dockerfile | grep "RUN build_")
     case "build_php.sh"
         set TECH php
         set TECH_VERBOSE PHP
+    case "build_php8.sh"
+        set TECH php
+        set TECH_VERBOSE PHP
     case "build_python.sh"
         set TECH python
         set TECH_VERBOSE Python
