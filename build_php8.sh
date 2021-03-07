@@ -67,11 +67,11 @@ curl -s https://getcomposer.org/installer | ./php -d allow_url_fopen=On
 cd -
 
 echo "no" | /opt/techs/php-$VERSION/bin/pecl install redis
-echo "no" | /opt/techs/php-$VERSION/bin/pecl install imagick
 
 
 echo "zend_extension=opcache.so" > /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
 echo "extension=redis.so" >> /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
 # Not supported yet
 # https://github.com/Imagick/imagick/issues/358
+# echo "no" | /opt/techs/php-$VERSION/bin/pecl install imagick
 # echo "extension=imagick.so" >> /opt/techs/php-$VERSION/etc/conf.d/extensions.ini

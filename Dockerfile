@@ -73,7 +73,7 @@ RUN build_php.sh 7.4.15
 ## PHP 8
 
 # 2021/02
-ADD build_php8.sh /usr/local/bin/build_php.sh
+ADD build_php8.sh /usr/local/bin/build_php8.sh
 RUN build_php8.sh 8.0.3
 
 ## Ruby
