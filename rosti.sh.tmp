@@ -28,7 +28,8 @@ function setTech() {
     tech=$1
 
     # Activation of primary tech bin directory
-    test ! -e $PRIMARYDIR || $TECHDIR/$tech/bin
+    # test ! -e $PRIMARYDIR || $TECHDIR/$tech/bin
+    test -L $PRIMARYDIR && unlink $PRIMARYDIR
     ln -s $TECHDIR/$tech/bin $PRIMARYDIR
 
     # Parse name of the tech - like python or node
@@ -51,7 +52,7 @@ function setTech() {
             echo "IMPORTANT: /srv/venv exists, if you have changed python version, make sure to create or update the virtualenv:"
             echo 
             echo "    rm -rf /srv/venv"
-            echo "    python3 -m venv /srv/venv)"
+            echo "    python3 -m venv /srv/venv"
             echo
             echo "Don't forget to backup the old venv if necessary."
         else
@@ -71,7 +72,7 @@ function setTech() {
         test -e /srv/conf/php-fpm/pool.d/app.conf || mv /srv/app/pool_app.conf /srv/conf/php-fpm/pool.d/app.conf
         test -e /srv/conf/php-fpm/php.ini || mv /srv/app/php.ini /srv/conf/php-fpm/php.ini
 
-        ln -s /srv/conf/php-fpm/php.ini /opt/techs/$tech/etc/conf.d/app.ini
+        test ! -e /srv/conf/php-fpm/php.ini && ln -s /srv/conf/php-fpm/php.ini /opt/techs/$tech/etc/conf.d/app.ini
 
         # And remove unneeded ones
         # TODO: not sure how good idea this is

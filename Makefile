@@ -1,5 +1,5 @@
 DOCKER=docker
-VERSION=2021.02-1
+VERSION=2021.03-1
 
 all: build
 
@@ -16,4 +16,4 @@ squashed:
 
 push: squashed
 	$(DOCKER) tag rosti/runtime:dev-squashed rosti/runtime:$(VERSION)
-	$(DOCKER) push rosti/runtime:$(VERSION)
+	$(DOCKER) push rosti/runtime:$(VERSION) 
