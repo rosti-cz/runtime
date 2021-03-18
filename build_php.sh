@@ -64,7 +64,8 @@ cd php-$VERSION
 	    --with-sodium \
         --with-kerberos \
         --with-soapclient \
-		--with-pear
+		--with-pear \
+		--enable-intl
 make -j
 make install
 
@@ -79,4 +80,3 @@ echo "no" | /opt/techs/php-$VERSION/bin/pecl install imagick
 
 echo "zend_extension=opcache.so" > /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
 echo "extension=redis.so" >> /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
-echo "extension=imagick.so" >> /opt/techs/php-$VERSION/etc/conf.d/extensions.ini

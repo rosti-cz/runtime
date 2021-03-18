@@ -55,7 +55,8 @@ cd php-$VERSION
 	    --with-imap-ssl \
 	    --with-sodium \
         --with-kerberos \
-		--with-pear
+		--with-pear \
+		--enable-intl
 make -j
 make install
 
@@ -67,7 +68,6 @@ curl -s https://getcomposer.org/installer | ./php -d allow_url_fopen=On
 cd -
 
 echo "no" | /opt/techs/php-$VERSION/bin/pecl install redis
-
 
 echo "zend_extension=opcache.so" > /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
 echo "extension=redis.so" >> /opt/techs/php-$VERSION/etc/conf.d/extensions.ini

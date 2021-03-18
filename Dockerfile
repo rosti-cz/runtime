@@ -24,7 +24,7 @@ python3 python3-pip python3-virtualenv \
 libcurl4-openssl-dev python-dev libproj-dev gdal-bin libmemcached-dev swig mutt \
 ffmpeg libyaml-dev libc-client2007e-dev libonig-dev libkrb5-dev dialog \
 whiptail tmux rsync nmap libzip-dev libfreetype6-dev \
-jpegoptim optipng pngquant gifsicle webp # User requirement (svgo not available)
+jpegoptim optipng pngquant gifsicle webp libvpx-dev # User requirement (svgo not available)
 
 WORKDIR /srv
 
