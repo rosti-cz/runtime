@@ -80,3 +80,5 @@ echo "no" | /opt/techs/php-$VERSION/bin/pecl install imagick
 
 echo "zend_extension=opcache.so" > /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
 echo "extension=redis.so" >> /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
+
+ln -s /srv/conf/php-fpm/php.ini /opt/techs/php-$VERSION/etc/conf.d/99-app.ini

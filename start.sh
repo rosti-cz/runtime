@@ -5,7 +5,10 @@
 ##################################
 
 for d in /srv/log /srv/conf /srv/run /srv/conf/supervisor.d /srv/var; do
-    test ! -e $d && mkdir -p $d
+    if [ ! -e $d ]; then
+        mkdir -p $d
+        chown app:app $d
+    fi
 done
 
 # Bin directory where active tech is located along other tools
@@ -32,7 +35,7 @@ rm -f /srv/run/*.pid
 if [ -e /srv/.rosti ]; then
     echo "app:`cat /srv/.rosti`" | chpasswd
     # file with ssh password has different owner
-    test chown root:root /srv/.rosti
+    chown root:root /srv/.rosti
     chmod 600 /srv/.rosti
 fi
 if [ -n "$SSHPASS" ]; then

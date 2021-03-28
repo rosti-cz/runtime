@@ -75,3 +75,5 @@ echo "extension=redis.so" >> /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
 # https://github.com/Imagick/imagick/issues/358
 # echo "no" | /opt/techs/php-$VERSION/bin/pecl install imagick
 # echo "extension=imagick.so" >> /opt/techs/php-$VERSION/etc/conf.d/extensions.ini
+
+ln -s /srv/conf/php-fpm/php.ini /opt/techs/php-$VERSION/etc/conf.d/99-app.ini
