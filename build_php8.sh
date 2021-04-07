@@ -56,7 +56,8 @@ cd php-$VERSION
 	    --with-sodium \
         --with-kerberos \
 		--with-pear \
-		--enable-intl
+		--enable-intl \
+		--with-webp
 make -j
 make install
 

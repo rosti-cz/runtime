@@ -65,7 +65,8 @@ cd php-$VERSION
         --with-kerberos \
         --with-soapclient \
 		--with-pear \
-		--enable-intl
+		--enable-intl \
+		--with-webp
 make -j
 make install
 
